@@ -19,7 +19,7 @@
 
 #define B_START clock_t t = clock(); size_t mem = (size_t)mallinfo().uordblks
 #define B_END t = clock() - t; mem = (size_t)mallinfo().uordblks - mem
-#define B_PRINT(type, op) printf(type "," op ",%d,%.2f,%u\n", n, ((double)t) / CLOCKS_PER_SEC * NS_PER_S / n, (unsigned)mem)
+#define B_PRINT(type, op) printf(type "," op ",%d,%.2f,%llu\n", n, ((double)t) / CLOCKS_PER_SEC * NS_PER_S / n, (unsigned long long)(mem > INT_MAX ? 0 : mem))
 
 #define INT_TO_PTR(i) (void*)(uintptr_t)(i)
 
