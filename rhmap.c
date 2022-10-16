@@ -40,7 +40,9 @@ void rhmap_deinit(RhMap* map) {
     free(map->buckets);
     free(map->keys);
     free(map->values);
-    map->buckets = map->keys = map->values = NULL;
+    map->buckets = NULL;
+    map->keys = NULL;
+    map->values = NULL;
     map->len = 0;
     ZERO_CAP(map);
 }

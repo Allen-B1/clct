@@ -42,4 +42,12 @@ static bool rhmap_eq_int(void* i1, void* i2) {
     return i1 == i2;
 }
 
+#define rhmap_iter(map, keyptr, valueptr, body) for (size_t _rhmap_iter_i = 0; _rhmap_iter_i < (map)->cap; _rhmap_iter_i++) { \
+    if ((map)->buckets[_rhmap_iter_i].dist != 0) { \
+        *(keyptr) =  (map)->keys[_rhmap_iter_i]; \
+        *(valueptr) = (map)->values[_rhmap_iter_i]; \
+        body \
+    } \
+}
+
 #endif
